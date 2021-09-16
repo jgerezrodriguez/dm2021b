@@ -20,7 +20,7 @@ require("mlrMBO")
 
 
 #defino la carpeta donde trabajo
-setwd( "~/buckets/b1/crudo/"  )
+setwd( "C:\\Users\\JGEREZR\\JG\\ITBA\\Ciencia de Datos\\DataMining"  )
 
 
 kexperimento  <- NA   #NA si se corre la primera vez, un valor concreto si es para continuar procesando
@@ -209,7 +209,8 @@ if( file.exists(klog) )
 
 #cargo el datset donde voy a entrenar
 dataset  <- fread(karch_generacion, stringsAsFactors= TRUE)   #donde entreno
-
+dataset[ , mpasivos_margen := NULL ]
+dataset[ , mactivos_margen := NULL ]
 dataset[ , clase_binaria := as.factor(ifelse( clase_ternaria=="BAJA+2", "POS", "NEG" )) ]
 dataset[ , clase_ternaria := NULL ]  #elimino la clase_ternaria, ya no la necesito
 #imputo los nulos, ya que ranger no acepta nulos
